@@ -12,11 +12,13 @@
       <!-- Blog Card -->
       <div class="card">
         <!-- Blog Image -->
+        <% if (blog.coverImageURL) { %>
         <img
           src="<%= blog.coverImageURL %>"
           class="card-img-top"
           alt="Blog Cover Image"
         />
+        <% } %>
 
         <!-- Blog Content -->
         <div class="card-body">
@@ -32,7 +34,7 @@
       </div>
       <!-- Comment Section -->
       <div class="mt-5">
-        <h5 >Comments ( <%= comments.length %> )</h5>
+        <h5>Comments ( <%= comments.length %> )</h5>
         <% if (locals.user) { %>
         <form method="post" action="/user/blogs/comment/<%= blog._id %>">
           <div class="mb-3">

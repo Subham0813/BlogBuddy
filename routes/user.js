@@ -3,7 +3,6 @@ const Comment = require("../models/comment");
 
 const { Router } = require("express");
 const { handleSignIn, handleSignUp } = require("../controllers/user");
-const { handleGetBlog } = require("../controllers/blog");
 
 const router = Router();
 

@@ -12,10 +12,14 @@ async function handleAddingNewBlog(req, res) {
       error: "There should be some content..",
     });
 
+  const coverImageURL = req.file
+    ? `/uploads/_${req.user._id}/${req.file.filename}`
+    : null;
+
   await Blog.create({
     title,
     body,
-    coverImageURL: `/uploads/_${req.user._id}/${req.file.filename}`,
+    coverImageURL,
     createdBy: req.user._id,
   });
 
@@ -28,7 +32,7 @@ async function handleAddComment(req, res) {
     blogId: req.params.blogId,
     createdBy: req.user._id,
   });
-  return res.redirect(`/blogs/${req.params.blogId}`)
+  return res.redirect(`/blogs/${req.params.blogId}`);
 }
 
 module.exports = {

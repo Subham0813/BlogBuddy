@@ -18,8 +18,8 @@ const app = express();
 
 connectDb()
 
-app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
+app.set("view engine", "ejs");
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: false }));

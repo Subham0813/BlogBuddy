@@ -17,6 +17,7 @@ router.post("/add-new", (req, res) => {
         error: err.message,
       });
     }
+    const coverImageUrl = req.file ? req.file.path : null;
     handleAddingNewBlog(req, res);
   });
 });
