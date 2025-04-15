@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs')%>
+
+    <title>Homepage</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+    <div class="container mt-3">
+      <% if (locals.blogs) { %>
+      <div class="row g-4 mb-3">
+        <% locals.blogs.forEach(blog => { %>
+        <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
+          <div class="card w-100">
+            <% if (blog.coverImageURL) { %>
+            <img
+              src="<%= blog.coverImageURL %>"
+              alt="Cover"
+              class="card-img-top"
+            />
+            <% } %>
+            <div class="card-body">
+              <h6 class="card-title"><%= blog.title %></h6>
+              <p class="card-text">
+                <%= blog.body.length > 100 ? blog.body.substring(0, 100) + "..."
+                : blog.body %>
+              </p>
+              <a href="blogs/<%= blog._id %>" class="btn btn-primary">
+                View
+              </a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
+    <%- include('./partials/scripts.ejs')%>
+  </body>
+</html>
