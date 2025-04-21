@@ -19,7 +19,60 @@
   setTimeout(() => {
     const alertEl = document.getElementById("warningAlert");
     if (alertEl) {
-      alertEl.remove()
+      alertEl.remove();
     }
   }, 5000);
+</script>
+
+<!-- Auto hide comment and reply vice-versa -->
+<script>
+  const replyButtons = document.querySelectorAll(".reply-btn");
+  const mainForm = document.getElementById("mainCommentForm");
+  const replyForms = document.querySelectorAll(".reply-form");
+
+  replyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const commentId = button.getAttribute("data-comment-id");
+      const replyForm = document.getElementById(`replyForm-${commentId}`);
+
+      // If this reply form is currently shown
+      const isVisible = !replyForm.classList.contains("d-none");
+
+      // Hide all reply forms first
+      replyForms.forEach((form) => form.classList.add("d-none"));
+
+      if (isVisible) {
+        // If already open, hide reply and show main form
+        replyForm.classList.add("d-none");
+        if (mainForm) mainForm.classList.remove("d-none");
+      } else {
+        // Otherwise show selected reply form and hide main
+        replyForm.classList.remove("d-none");
+        if (mainForm) mainForm.classList.add("d-none");
+      }
+    });
+  });
+</script>
+<!-- collapsible reply -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".toggle-replies-btn");
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const commentId = button.getAttribute("data-comment-id");
+        const repliesDiv = document.getElementById(`replies-${commentId}`);
+
+        if (repliesDiv.classList.contains("d-none")) {
+          repliesDiv.classList.remove("d-none");
+          button.innerHTML = "Hide Replies";
+        } else {
+          repliesDiv.classList.add("d-none");
+          button.innerHTML = `View Replies (${
+            repliesDiv.querySelectorAll("div.mb-2").length
+          })`;
+        }
+      });
+    });
+  });
 </script>
