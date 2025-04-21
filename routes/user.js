@@ -19,9 +19,12 @@ router.get("/blogs/:id", async (req, res) => {
   const blogId = req.params.id;
   const blog = await Blog.findOne({ _id: blogId }).populate("createdBy");
   const user = req.user;
-  const comments = await Comment.find({ blogId: blog._id }).populate(
-    "createdBy"
-  );
+  const comments = await Comment.find({ blogId: blog._id })
+    .populate("createdBy")
+    .populate({
+      path: "replies",
+      populate: { path: "createdBy" },
+    });
   return res.render("viewBlog", {
     blog: blog,
     user: user,
