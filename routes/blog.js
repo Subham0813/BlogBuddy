@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { checkForAuthCookie } = require("../middleware/auth");
-const { handleAddingNewBlog, handleAddComment } = require("../controllers/blog");
+const { handleAddingNewBlog, handleAddComment, postReply , handleLikes, replyLike} = require("../controllers/blog");
 const { upload } = require("../services/fileUpload");
 
 const router = Router();
@@ -23,5 +23,9 @@ router.post("/add-new", (req, res) => {
 });
 
 router.post('/blogs/comment/:blogId', handleAddComment)
+router.post('/blogs/comment/:comment_id/like', handleLikes)
+router.post('/blogs/comment/:blog_id/reply/:comment_id', postReply)
+router.post('/blogs/comment/replies/:reply_id/like', replyLike);
+
 
 module.exports = router;
