@@ -7,7 +7,6 @@ dotenv.config();
 
 const userRoute = require("./routes/user");
 const blogRoute = require("./routes/blog");
-const e = require("express");
 const {
   checkForAuthCookie,
   checkForExistingUser,
