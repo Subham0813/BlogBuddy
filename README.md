@@ -99,19 +99,17 @@ http://localhost:8000
 
 ## 📸 Screenshots
 
-Here are a few snapshots of BlogBuddy in action:
+Here are a few snapshots of **BlogBuddy** in action:
 
-**📱 Mobile View**
-
-![alt text](Screenshot_20250422-140124-1.png)
+### 📱 Mobile View  
+![Mobile View](./screenshots/Screenshot_20250422-140124.png)
 
 ---
 
-**💻 Desktop View**
+### 💻 Desktop View  
+![Home Page](./screenshots/image.png)  
+![Blog Page](./screenshots/screencapture-blogbuddy1-0-onrender-blogs-68075238026b820a56e20bd7-2025-04-22-14_00_17.png)
 
-![alt text](image.png)
-
-![alt text](screencapture-blogbuddy1-0-onrender-blogs-68075238026b820a56e20bd7-2025-04-22-14_00_17-1.png)
 
 ---
 
